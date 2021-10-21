@@ -63,7 +63,7 @@ class permissionsAPI extends CRUDAPI {
 				"output" => [
 					'headers' => $this->Auth->getHeaders($request),
 					'raw' => $raw,
-					'results' => $result,
+					'dom' => $result,
 				],
 			];
 			if($this->Settings['debug']){
@@ -90,8 +90,7 @@ class permissionsAPI extends CRUDAPI {
 						"request" => $request,
 						"data" => $data,
 						"output" => [
-							'results' => $result,
-							'record' => $this->convertToDOM($record),
+							'dom' => $this->convertToDOM($record),
 							'raw' => $record,
 						],
 					];
@@ -101,7 +100,7 @@ class permissionsAPI extends CRUDAPI {
 						"request" => $request,
 						"data" => $data,
 						"output" => [
-							'results' => $result,
+							'dom' => $result,
 						],
 					];
 				}
@@ -111,7 +110,7 @@ class permissionsAPI extends CRUDAPI {
 					"request" => $request,
 					"data" => $data,
 					"output" => [
-						'results' => $result,
+						'dom' => $result,
 					],
 				];
 			}

@@ -1,7 +1,7 @@
 {
     "repository": {
         "name": "appmaker-permissions",
-        "branch": "pre-release",
+        "branch": "dev",
         "manifest": "\/dist\/data\/manifest.json",
         "host": {
             "git": "https:\/\/github.com\/LouisOuellet\/",
@@ -14,6 +14,6 @@
         ]
     },
     "name": "permissions",
-    "build": 25,
-    "version": "21.10-pre-release"
+    "build": 26,
+    "version": "21.10-dev"
 }
