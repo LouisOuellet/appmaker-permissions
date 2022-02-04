@@ -1,4 +1,4 @@
-API.Plugins.permissions = {
+Engine.Plugins.permissions = {
 	element:{
 		table:{index:{}},
 	},
@@ -8,19 +8,19 @@ API.Plugins.permissions = {
 	},
 	options:{create:{skip:['role_id']},update:{skip:['role_id']}},
 	init:function(){
-		API.GUI.Sidebar.Nav.add('Permissions', 'development');
+		Engine.GUI.Sidebar.Nav.add('Permissions', 'development');
 	},
 	load:{
 		index:function(){
-			API.Builder.card($('#pagecontent'),{ title: 'Permissions', icon: 'permissions'}, function(card){
-				API.request('permissions','read',{
+			Engine.Builder.card($('#pagecontent'),{ title: 'Permissions', icon: 'permissions'}, function(card){
+				Engine.request('permissions','read',{
 					data:{options:{ link_to:'PermissionsIndex',plugin:'permissions',view:'index' }},
 				},function(result) {
 					var dataset = JSON.parse(result);
 					if(dataset.success != undefined){
-						for(const [key, value] of Object.entries(dataset.output.dom)){ API.Helper.set(API.Contents,['data','dom','permissions',value.name],value); }
-						for(const [key, value] of Object.entries(dataset.output.raw)){ API.Helper.set(API.Contents,['data','raw','permissions',value.name],value); }
-						API.Builder.table(card.children('.card-body'), dataset.output.dom, {
+						for(const [key, value] of Object.entries(dataset.output.dom)){ Engine.Helper.set(Engine.Contents,['data','dom','permissions',value.name],value); }
+						for(const [key, value] of Object.entries(dataset.output.raw)){ Engine.Helper.set(Engine.Contents,['data','raw','permissions',value.name],value); }
+						Engine.Builder.table(card.children('.card-body'), dataset.output.dom, {
 							headers:dataset.output.headers,
 							id:'PermissionsIndex',
 							modal:true,
@@ -29,7 +29,7 @@ API.Plugins.permissions = {
 							clickable:{ enable:true, view:'details'},
 							controls:{ toolbar:true},
 						},function(response){
-							API.Plugins.permissions.element.table.index = response.table;
+							Engine.Plugins.permissions.element.table.index = response.table;
 						});
 					}
 				});
@@ -38,4 +38,4 @@ API.Plugins.permissions = {
 	},
 };
 
-API.Plugins.permissions.init();
+Engine.Plugins.permissions.init();
